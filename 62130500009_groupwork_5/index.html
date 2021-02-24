@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Basic Vue Js - HelloWorld App</title>
+
+  <!-- https://google.github.io/material-design-icons/#icon-font-for-the-web -->
+  <!-- Using via Google Web Fonts -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
+  <!-- https://tailwindcss.com/docs/installation -->
+  <!-- Using Tailwind via CDN -->
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
+
+  <link href="https://cdn.iconmonstr.com/1.3.0/css/iconmonstr-iconic-font.min.css" rel="stylesheet" />
+  <!-- https://v3.vuejs.org/guide/installation.html#release-notes -->
+  <!-- Vue CDN -->
+  <script src="https://unpkg.com/vue@next"></script>
+
+</head>
+<!---->
+
+<body>
+  <div id="app" class=" text-center p-20">
+    <div>
+     
+     <div v-show="!searching">
+      <h1 class="text-xl " >DISCORVERED </h1>
+      <i class="im im-magnifier cursor-pointer transform hover:scale-110 duration-150 mt-2" v-on:click="toggleSearch()"></i>
+     </div>
+     <div v-show="searching" >
+      <h1 class="text-xl " v-show="searching">DISCORVER </h1>
+     <input  v-model="search" placeholder=" Please enter text for searching photos"
+      @keyup.enter="filteredList(search);filterNoFound()" class="w-72 border border-blue-500 "/>
+     <button v-on:click="toggleSearch()" class="bg-green-500 text-white  py-1 px-2 rounded ml-2">      
+        Cancel
+      </button>
+      
+      <!--<p>{{test}}</p> -->
+    </div>
+    </div>
+    <div v-if="searchNotFound() == peoples.length">
+      <h1 class="text-base">No Photo!</h1>
+    </div>
+    <div >
+      <ul class="flex space-x-4 justify-center mt-10 ">
+        <li  v-for="(people,index) in peoples">
+          <div v-show="people.pic">{{people.fullname}} 
+          
+          <span class="flex bg-black h-48 w-96 " v-show="people.big">
+        
+            <img :src="people.img" alt=""
+              class="h-36 w-36   mt-6 ml-28 transform hover:scale-110 duration-150 opacity-90 hover:opacity-100 .shadow-md border-2 border-white"
+              >
+              <button v-on:click="toggleBigImage(index); "  class=" ml-16 mt-3 h-2" >
+                <img src="./images/cross.png" alt="">
+              </button>
+          </span>
+      <span  class="flex justify-center ">
+        
+        <img :src="people.img" alt=""
+        v-on:click="toggleBigImage(index); " class="h-24 w-24  rounded-full mt-6 transform hover:scale-110 duration-150 opacity-90 hover:opacity-100 .shadow-md "
+          >
+      </span>
+        <div >
+          <p class="mt-4">{{people.job}}</p> <small class="mt-4">{{people.describe}}</small>
+        </div>
+        <span class="flex justify-center ">
+          <img v-show="!people.like" v-on:click="toggleLike(index);" src="./images/hearth.png" alt="" class="mt-6 transform hover:scale-110 duration-150 cursor-pointer">
+          <i v-show="people.like" v-on:click="toggleLike(index);" class="im im-heart text-red-500 mt-3 transform hover:scale-110 cursor-pointer duration-150">
+          <br />I like!
+        </i>
+      </span>
+    </div>
+      </li>
+
+
+
+      
+      
+      </ul>
+      <h2 class="mt-10">Total People You like</h2>
+      <h2 class="mt-6 ">{{countLike}}</h2>
+    </div>
+ 
+  </div>
+  <!-- my main.js -->
+  <script src="./main.js"></script>
+</body>
+
+</html>
