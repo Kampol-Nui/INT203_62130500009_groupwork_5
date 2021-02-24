@@ -43,6 +43,9 @@ const app = Vue.createApp({
         toggleLike(index) {
             this.peoples[index].like = !this.peoples[index].like
         },
+        toggleBigImage(index) {
+            this.peoples[index].big = !this.peoples[index].big
+        },
         // toggleLikeSearch(index) {
         //     this.peoplesSearch[index].like = !this.peoplesSearch[index].like
         // },
