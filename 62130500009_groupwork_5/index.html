@@ -39,55 +39,20 @@
       </button>
       
       <!--<p>{{test}}</p> -->
+     </div>
     </div>
-    </div>
-    <div v-if="searchNotFound() == peoples.length">
-      <h1 class="text-base">No Photo!</h1>
-    </div>
-    <div >
-      <ul class="flex space-x-4 justify-center mt-10 ">
-        <li  v-for="(people,index) in peoples">
-          <div v-show="people.pic">{{people.fullname}} 
-          
-          <span class="flex bg-black h-48 w-96 " v-show="people.big">
-        
-            <img :src="people.img" alt=""
-              class="h-36 w-36   mt-6 ml-28 transform hover:scale-110 duration-150 opacity-90 hover:opacity-100 .shadow-md border-2 border-white"
-              >
-              <button v-on:click="toggleBigImage(index); "  class=" ml-16 mt-3 h-2" >
-                <img src="./images/cross.png" alt="">
-              </button>
-          </span>
-      <span  class="flex justify-center ">
-        
-        <img :src="people.img" alt=""
-        v-on:click="toggleBigImage(index); " class="h-24 w-24  rounded-full mt-6 transform hover:scale-110 duration-150 opacity-90 hover:opacity-100 .shadow-md "
-          >
-      </span>
-        <div >
-          <p class="mt-4">{{people.job}}</p> <small class="mt-4">{{people.describe}}</small>
-        </div>
-        <span class="flex justify-center ">
-          <img v-show="!people.like" v-on:click="toggleLike(index);" src="./images/hearth.png" alt="" class="mt-6 transform hover:scale-110 duration-150 cursor-pointer">
-          <i v-show="people.like" v-on:click="toggleLike(index);" class="im im-heart text-red-500 mt-3 transform hover:scale-110 cursor-pointer duration-150">
-          <br />I like!
-        </i>
-      </span>
-    </div>
-      </li>
-
-
-
-      
-      
-      </ul>
-      <h2 class="mt-10">Total People You like</h2>
-      <h2 class="mt-6 ">{{countLike}}</h2>
-    </div>
+    <people-list :peoples="peoples" @toggle-bigimage="toggleBigImage">
+      </people-list>
+   
+       
+    
  
   </div>
   <!-- my main.js -->
   <script src="./main.js"></script>
+  <script src="./PhotoItem.js"></script>
+  <script src="./PhotoView.js"></script>
+  <script >const moutedApp = app.mount('#app')</script>
 </body>
 
 </html>

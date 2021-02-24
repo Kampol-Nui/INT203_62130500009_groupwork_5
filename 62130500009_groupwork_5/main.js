@@ -1,4 +1,4 @@
-const app = {
+const app = Vue.createApp({
     data() {
         return {
            
@@ -42,9 +42,6 @@ const app = {
     methods: {
         toggleLike(index) {
             this.peoples[index].like = !this.peoples[index].like
-        },
-        toggleBigImage(index) {
-            this.peoples[index].big = !this.peoples[index].big
         },
         // toggleLikeSearch(index) {
         //     this.peoplesSearch[index].like = !this.peoplesSearch[index].like
@@ -128,5 +125,4 @@ const app = {
         },
         
     }
-}
-Vue.createApp(app).mount('#app')
+})
