@@ -40,33 +40,31 @@ const app = Vue.createApp({
         }
     },
     methods: {
-        toggleLike(index) {
-            this.peoples[index].like = !this.peoples[index].like
-        },
-        toggleBigImage(index) {
-            this.peoples[index].big = !this.peoples[index].big
-        },
+        // toggleLike(index) {
+        //     this.peoples[index].like = !this.peoples[index].like
+        // },
+       
         // toggleLikeSearch(index) {
         //     this.peoplesSearch[index].like = !this.peoplesSearch[index].like
         // },
         // toggleBigImageSearch(index) {
         //     this.peoplesSearch[index].big = !this.peoplesSearch[index].big
         // },
-        toggleSearch() {
-            this.searching = !this.searching
-            // this.peoplesSearch = ''
-            // this.noPhoto = false
-            for (let i = 0;i<this.peoples.length;i++) {
+        // toggleSearch() {
+        //     this.searching = !this.searching
+        //     // this.peoplesSearch = ''
+        //     // this.noPhoto = false
+        //     for (let i = 0;i<this.peoples.length;i++) {
               
-                // console.log((this.gallery[i].picture_name.toLowerCase().includes(this.search.textinput.toLowerCase())))
-                // console.log(this.gallery[i].pic)
+        //         // console.log((this.gallery[i].picture_name.toLowerCase().includes(this.search.textinput.toLowerCase())))
+        //         // console.log(this.gallery[i].pic)
                 
-                        this.peoples[i].pic = true            
+        //                 this.peoples[i].pic = true            
                         
                    
-                }
-        }
-        ,
+        //         }
+        // }
+        // ,
         // filteredList(search) {
         //     if(search){
         //       this.peoplesSearch =  this.peoples.filter(post => {
@@ -80,28 +78,26 @@ const app = Vue.createApp({
         //           }
         //     }
         //   },
-          filteredList(search){
+        //   filteredList(search){
             
-            for (let i = 0;i<this.peoples.length;i++) {
+        //     for (let i = 0;i<this.peoples.length;i++) {
                 
-                // console.log((this.gallery[i].picture_name.toLowerCase().includes(this.search.textinput.toLowerCase())))
-                // console.log(this.gallery[i].pic)
+        //         // console.log((this.gallery[i].picture_name.toLowerCase().includes(this.search.textinput.toLowerCase())))
+        //         // console.log(this.gallery[i].pic)
                
-                if((this.peoples[i].job.toLowerCase().includes(this.search.toLowerCase()))==false){
-                 this.peoples[i].pic = false
+        //         if((this.peoples[i].job.toLowerCase().includes(this.search.toLowerCase()))==false){
+        //          this.peoples[i].pic = false
                 
-                    }else{
-                        this.peoples[i].pic = true  
+        //             }else{
+        //                 this.peoples[i].pic = true  
                          
-                        }
+        //                 }
                         
-                }
+        //         }
                 
                 
-          },
-          searchNotFound() {
-            return this.peoples.filter(peoples => !peoples.pic).length
-        }/*
+        //   },
+          /*
           transformImage(index) {
             document.getElementsByTagName("img")[index].style.transform = "scale(1.25)"
             document.getElementsByTagName("img")[index].style.borderRadius = "0";
@@ -122,10 +118,10 @@ const app = Vue.createApp({
       
         
     },
-    computed: {
-        countLike() {
-            return this.peoples.filter(t => t.like).length
-        },
+    // computed: {
+    //     countLike() {
+    //         return this.peoples.filter(t => t.like).length
+    //     },
         
-    }
+    // }
 })

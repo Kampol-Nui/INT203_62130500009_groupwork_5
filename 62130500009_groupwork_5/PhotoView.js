@@ -1,9 +1,10 @@
 app.component('people-view',{
     props:{
         people: {
-            
+            type:Object,
             require: true
         }
+       
     },
     template: 
     /*html*/
@@ -21,9 +22,13 @@ app.component('people-view',{
   class="h-24 w-24  rounded-full mt-6 transform hover:scale-110 duration-150 opacity-90 hover:opacity-100 .shadow-md ">
 </span>
         `,
-    methods: {
-        toggleBigImage(index){
-            this.$emit('toggle-bigimage',index)
+        methods: {
+          // toggleBigImage(index){
+          //     this.$emit('toggle-bigimage',index)
+          // },
+          toggleBigImage(index) {
+            console.log(this.people)
+            this.people.big = !this.people.big
         },
         
     }
