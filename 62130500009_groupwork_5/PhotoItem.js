@@ -3,19 +3,25 @@ app.component('people-list',{
         peoples: {
             type: Array,
             require: true
-        }
-    },
+        },
+        notfound:{},
+        countlike:{}
+,    },
+    
+    emits: ["toggle-bigimg","toggle-like","countLike"]
+    ,
+    
     template: 
     /*html*/
     `
-    <div v-if="searchNotFound() == peoples.length">
+    <div v-if="notfound==peoples.length">
       <h1 class="text-base">No Photo!</h1>
     </div>
     <ul class="flex space-x-4 justify-center mt-10 ">
     <li v-for="(people,index) in peoples">
       <div v-show="people.pic">{{people.fullname}}
     
-      <people-view :people="people">  </people-view>
+      <people-view :people="people" @toggle-bigimg="this.$emit('toggle-bigimg',index)">  </people-view>
      
         
         <div>
@@ -38,21 +44,23 @@ app.component('people-list',{
 
   </ul>
   <h2 class="mt-10">Total People You like</h2>
-      <h2 class="mt-6 ">{{countLike}}</h2>`,
+      <h2 class="mt-6 ">{{countlike}}</h2>`,
     methods: {
       toggleLike(index) {
-        this.peoples[index].like = !this.peoples[index].like
+        this.$emit('toggle-like',index)
     },
         // toggleLike(index){
         //     this.$emit('toggle-like',index)
         // },
-        searchNotFound() {
-          return this.peoples.filter(peoples => !peoples.pic).length
-      },
-      
+       
+    //     searchNotFound() {
+    //       console.log("asdsd")
+         
+    //     return this.peoples.filter(peoples => !peoples.pic).length
+    // }, 
     },
-    computed: {
-      countLike() {
-          return this.peoples.filter(t => t.like).length
-      },}
+    // computed: {
+    //   countLike() {
+    //     this.$emit('count-like')
+    //   },}
 })

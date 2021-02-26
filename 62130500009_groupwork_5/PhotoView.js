@@ -6,6 +6,9 @@ app.component('people-view',{
         }
        
     },
+    
+    emits: ["toggle-bigimg"]
+    ,
     template: 
     /*html*/
     `
@@ -27,8 +30,7 @@ app.component('people-view',{
           //     this.$emit('toggle-bigimage',index)
           // },
           toggleBigImage(index) {
-            console.log(this.people)
-            this.people.big = !this.people.big
+            this.$emit('toggle-bigimg',index)
         },
         
     }

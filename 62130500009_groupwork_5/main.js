@@ -33,17 +33,54 @@ const app = Vue.createApp({
                    
                 }
             ],search : ''
-            ,searching : false
+            ,searching : false,notfound : ''
            
              
             
         }
     },
     methods: {
-        // toggleLike(index) {
-        //     this.peoples[index].like = !this.peoples[index].like
-        // },
-       
+        toggleLike(index) {
+            
+            this.peoples[index].like = !this.peoples[index].like
+        },
+        toggleBigImage(index) {
+            this.peoples[index].big = !this.peoples[index].big
+        },
+         toggleSearch() {
+                this.searching= !this.searching
+                // this.peoplesSearch = ''
+                // this.noPhoto = false
+                for (let i = 0;i<this.peoples.length;i++) {
+                  
+                    // console.log((this.gallery[i].picture_name.toLowerCase().includes(this.search.textinput.toLowerCase())))
+                    // console.log(this.gallery[i].pic)
+                    
+                            this.peoples[i].pic = true            
+                            
+                       
+                    }
+            }
+            ,
+            filteredList(search){
+            this.search = search
+                for (let i = 0;i<this.peoples.length;i++) {
+                    
+                    // console.log((this.gallery[i].picture_name.toLowerCase().includes(this.search.textinput.toLowerCase())))
+                    // console.log(this.gallery[i].pic)
+                   
+                    if((this.peoples[i].job.toLowerCase().includes(this.search.toLowerCase()))==false){
+                     this.peoples[i].pic = false
+                    
+                        }else{
+                            this.peoples[i].pic = true  
+                             
+                            }
+                            
+                    }
+                    
+                    
+              },
         // toggleLikeSearch(index) {
         //     this.peoplesSearch[index].like = !this.peoplesSearch[index].like
         // },
@@ -116,12 +153,16 @@ const app = Vue.createApp({
           }*/
           
       
-        
+           
     },
-    // computed: {
-    //     countLike() {
-    //         return this.peoples.filter(t => t.like).length
-    //     },
+    computed: {
+        countLike() {
+            return this.peoples.filter(t => t.like).length
+        },
+        searchNotFound() {
+            return this.peoples.filter(peoples => !peoples.pic).length
+           
+      }, 
         
-    // }
+    }
 })
