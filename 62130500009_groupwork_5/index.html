@@ -24,10 +24,12 @@
 
 <body>
   <div id="app" class=" text-center p-20">
-    <people-search :peoples="peoples" :searching="searching" :search="search" @toggle-search="toggleSearch" @filter-list="filteredList"></people-search>
-    <people-list :peoples="peoples" :notfound="searchNotFound" :countlike="countLike" @toggle-like="toggleLike" @toggle-bigimg="toggleBigImage"  >
+    <people-search :peoples="peoples" :searching="searching" :search="search" @toggle-search="toggleSearch"
+      @filter-list="filteredList"></people-search>
+    <people-list :peoples="peoples" :notfound="searchNotFound" :countlike="countLike" @toggle-like="toggleLike"
+      @toggle-bigimg="toggleBigImage">
     </people-list>
-   
+
   </div>
   <!-- my main.js -->
   <script src="./main.js"></script>

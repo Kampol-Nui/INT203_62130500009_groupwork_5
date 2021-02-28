@@ -1,17 +1,16 @@
-app.component('people-list',{
-    props:{
-        peoples: {
-            type: Array,
-            require: true
-        },
-        notfound:{},
-        countlike:{}
-,    },
-    
-    emits: ["toggle-bigimg","toggle-like","countLike"]
-    ,
-    
-    template: 
+app.component('people-list', {
+  props: {
+    peoples: {
+      type: Array,
+      require: true
+    },
+    notfound: {},
+    countlike: {},
+  },
+
+  emits: ["toggle-bigimg", "toggle-like", "countLike"],
+
+  template:
     /*html*/
     `
     <div v-if="notfound==peoples.length">
@@ -45,22 +44,10 @@ app.component('people-list',{
   </ul>
   <h2 class="mt-10">Total People You like</h2>
       <h2 class="mt-6 ">{{countlike}}</h2>`,
-    methods: {
-      toggleLike(index) {
-        this.$emit('toggle-like',index)
+  methods: {
+    toggleLike(index) {
+      this.$emit('toggle-like', index)
     },
-        // toggleLike(index){
-        //     this.$emit('toggle-like',index)
-        // },
-       
-    //     searchNotFound() {
-    //       console.log("asdsd")
-         
-    //     return this.peoples.filter(peoples => !peoples.pic).length
-    // }, 
-    },
-    // computed: {
-    //   countLike() {
-    //     this.$emit('count-like')
-    //   },}
+  },
+
 })

@@ -1,18 +1,17 @@
-app.component('people-view',{
-    props:{
-        people: {
-            type:Object,
-            require: true
-        }
-       
-    },
-    
-    emits: ["toggle-bigimg"]
-    ,
-    template: 
+app.component('people-view', {
+  props: {
+    people: {
+      type: Object,
+      require: true
+    }
+
+  },
+
+  emits: ["toggle-bigimg"],
+  template:
     /*html*/
     `
-    <span class="flex bg-black h-48 w-96 " v-show="people.big">
+  <span class="flex bg-black h-48 w-96 " v-show="people.big">
 
     <img :src="people.img" alt=""
       class="h-36 w-36   mt-6 ml-28 transform hover:scale-110 duration-150 opacity-90 hover:opacity-100 .shadow-md border-2 border-white">
@@ -21,17 +20,14 @@ app.component('people-view',{
     </button>
   </span>
   <span class="flex justify-center ">
-  <img :src="people.img" alt="" v-on:click="toggleBigImage(index); "
-  class="h-24 w-24  rounded-full mt-6 transform hover:scale-110 duration-150 opacity-90 hover:opacity-100 .shadow-md ">
-</span>
+    <img :src="people.img" alt="" v-on:click="toggleBigImage(index); "
+    class="h-24 w-24  rounded-full mt-6 transform hover:scale-110 duration-150 opacity-90 hover:opacity-100 .shadow-md ">
+  </span>
         `,
-        methods: {
-          // toggleBigImage(index){
-          //     this.$emit('toggle-bigimage',index)
-          // },
-          toggleBigImage(index) {
-            this.$emit('toggle-bigimg',index)
-        },
-        
-    }
+  methods: {
+    toggleBigImage(index) {
+      this.$emit('toggle-bigimg', index)
+    },
+
+  }
 })

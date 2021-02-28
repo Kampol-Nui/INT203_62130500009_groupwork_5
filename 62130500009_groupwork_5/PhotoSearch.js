@@ -1,27 +1,28 @@
-app.component('people-search',{
-    props:{
-        peoples: {
-            type:Array,
-            require: true
-        },
-        
-        searching: {
-          type:Boolean,
-          
-        },
-        search: {
-          type:String
-        }
+app.component('people-search', {
+  props: {
+    peoples: {
+      type: Array,
+      require: true
     },
-    data:function(){
-        return{
-    
-    mutableSearch: this.search
-}},
-    template: 
+
+    searching: {
+      type: Boolean,
+
+    },
+    search: {
+      type: String
+    }
+  },
+  data: function () {
+    return {
+
+      mutableSearch: this.search
+    }
+  },
+  template:
     /*html*/
     `
-    <div>
+  <div>
 
     <div v-show="!searching">
       <h1 class="text-xl ">DISCORVERED </h1>
@@ -35,53 +36,16 @@ app.component('people-search',{
       <button v-on:click="toggleSearch()" class="bg-green-500 text-white  py-1 px-2 rounded ml-2">
         Cancel
       </button>
-
-      <!--<p>{{test}}</p> -->
     </div>
   </div>
         `,
-        methods: {
-           
-            // toggleSearch() {
-            //     this.mutableSearching= !this.mutableSearching
-            //     // this.peoplesSearch = ''
-            //     // this.noPhoto = false
-            //     for (let i = 0;i<this.peoples.length;i++) {
-                  
-            //         // console.log((this.gallery[i].picture_name.toLowerCase().includes(this.search.textinput.toLowerCase())))
-            //         // console.log(this.gallery[i].pic)
-                    
-            //                 this.peoples[i].pic = true            
-                            
-                       
-            //         }
-            // }
-            // ,
-            // filteredList(mutableSearh){
-            
-            //     for (let i = 0;i<this.peoples.length;i++) {
-                    
-            //         // console.log((this.gallery[i].picture_name.toLowerCase().includes(this.search.textinput.toLowerCase())))
-            //         // console.log(this.gallery[i].pic)
-                   
-            //         if((this.peoples[i].job.toLowerCase().includes(this.mutableSearh.toLowerCase()))==false){
-            //          this.peoples[i].pic = false
-                    
-            //             }else{
-            //                 this.peoples[i].pic = true  
-                             
-            //                 }
-                            
-            //         }
-                    
-                    
-            //   },
-            toggleSearch() {
-                this.$emit('toggle-search')
-            },
-            filteredList(mutableSearch){
-                this.$emit('filter-list',mutableSearch)
-            }
-        
+  methods: {
+    toggleSearch() {
+      this.$emit('toggle-search')
+    },
+    filteredList(mutableSearch) {
+      this.$emit('filter-list', mutableSearch)
     }
+
+  }
 })
